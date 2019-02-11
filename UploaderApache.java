@@ -115,17 +115,16 @@ class UploaderApache extends AsyncTask <String,String,Boolean> {
             }
 
         }
-        try {
-
-            if (ftp.login("Samuel", "asdf1234")) {
-
-
+        
                 try {
                     ftp.setFileType(FTP.BINARY_FILE_TYPE);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+               
+               
                 ftp.enterLocalPassiveMode();
+                
                 try {
                     Log.i("LOGi", "Starte Hochladen der Bilder:" + pfad);
 
@@ -138,18 +137,9 @@ class UploaderApache extends AsyncTask <String,String,Boolean> {
                     e.printStackTrace();
                     publishProgress("Fehler beim Hochladen der Bilder");
                     cancel(true);
-                }
-            } else {
-                publishProgress("Falsche Login Daten");
-                cancel(true);
-            }
-
-        } catch (IOException e) {
-
-            publishProgress("Fehler beim Einloggen");
-            e.printStackTrace();
-            cancel(true);
-        }
+                    
+                  } 
+        
 
             disconnect();
 
